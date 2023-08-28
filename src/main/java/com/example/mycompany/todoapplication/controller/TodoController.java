@@ -2,6 +2,7 @@ package com.example.mycompany.todoapplication.controller;
 
 import com.example.mycompany.todoapplication.model.Todo;
 import com.example.mycompany.todoapplication.service.TodoService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,8 +23,11 @@ private final TodoService todoService;
     }
 
     @RequestMapping(value = "/list-todo")
-    public String getListOfTodo (Model model){
+    public String getListOfTodo (Model model, Authentication authentication){
         List<Todo> todo = todoService.findAllMessage();
+
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("role", authentication.getAuthorities().toString());
         model.addAttribute("todo" ,todo);
         return "todo-list";
     }
@@ -34,7 +38,7 @@ private final TodoService todoService;
         return modelAndView;
     }
 
-    @RequestMapping (value = {"/save-todo"})
+    @RequestMapping (value = {"/save-todo"} , method = RequestMethod.POST)
     public String saveMessages(@ModelAttribute("todo") Todo todo){
             todoService.saveMessage(todo);
             return "redirect:/list-todo";
@@ -57,4 +61,6 @@ private final TodoService todoService;
     todoService.updateTodo(todo);
     return "redirect:/list-todo";
     }
+
+
 }

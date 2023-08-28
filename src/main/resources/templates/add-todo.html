@@ -8,7 +8,7 @@
 		<body>
 		   <div class="container">
 				     <div th:replace="common/header :: navbar"></div>
-				<form action="/save-todo" class="form-floating" th:object="${todo}">
+				<form action="/save-todo" class="form-floating" th:object="${todo}" method="post">
 
 					<input type="text" class="form-control" id="floatingInputValue" th:field="*{description}"/>
 					<label for="floatingInputValue" >Name of new Todo</label>
