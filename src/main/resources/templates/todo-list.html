@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List</title>
+
+	<link href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div th:replace="common/header :: navbar">
+
+  </div>
+   <div class="container">
+  <table class="table">
+	  <thead>
+	  <tr>
+		  <th scope="col">Id</th>
+		  <th scope="col">Description</th>
+		  <th scope="col">Target-Date</th>
+		  <th scope="col">Done</th>
+	  </tr>
+	  </thead>
+	  <tbody>
+	  <tr  th:each="todos :${todo}">
+		  <th scope="row" th:text="${todos.id}"></th>
+		  <td th:text="${todos.description}" ></td>
+		  <td th:text="${todos.targetDate}"></td>
+		  <td th:text="${todos.done}"></td>
+		  <td><a th:href="@{/delete-todo(id=${todos.id})}" class="btn btn-warning">Delete</a></td>
+		  <td><a th:href="@{/edit-todo(id=${todos.id})}" class="btn btn-dark">Edit </a></td>
+	  </tr>
+
+	  </tbody>
+  </table>
+	   <a class="btn btn-success" th:href="@{/add-todo}">Add Todo</a>
+	   <a class="btn btn-primary" th:href="@{/home}">Back</a>
+   </div>
+  <script src="webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script src="webjars/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+
+</body>
+</html>

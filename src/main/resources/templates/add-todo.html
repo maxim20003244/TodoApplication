@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+				<meta charset="UTF-8">
+				<title>Title</title>
+
+	</head>
+		<body>
+		   <div class="container">
+				     <div th:replace="common/header :: navbar"></div>
+				<form action="/save-todo" class="form-floating" th:object="${todo}">
+
+					<input type="text" class="form-control" id="floatingInputValue" th:field="*{description}"/>
+					<label for="floatingInputValue" >Name of new Todo</label>
+
+					<input type="text" class=" form-control" th:field="*{targetDate}" >
+
+					<button type="submit" class="btn btn-success">Save Todo</button>
+
+					<a class="m-lg-3 btn btn-primary" th:href="@{/list-todo}">Back</a>
+				</form>
+
+
+
+            </div>
+		</body>
+</html>
