@@ -1,9 +1,8 @@
 package com.example.mycompany.todoapplication.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +17,15 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private  int id;
+    @Size( min=5 ,message = "Min 5 character username")
+
     private String username;
+
     private String description;
+
     private LocalDate targetDate;
+
     private boolean done ;
 }

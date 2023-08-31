@@ -80,13 +80,11 @@
                <div class="col-md-8 login-center input-grids">
                  <li class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(errorMessages)}"
                      th:text="${errorMessages}" />
-               <!--  <input type="text" name="username" id="username" placeholder="Username"
-                        class="form-control" />-->
                    <input type="text" name="username" id="username" class="form-control"  placeholder="Username"/>
                    <label class="form-label" for="username"></label>
 
 
-                 <input type="text" name="password" id="password" class="form-control"  placeholder="Password"/>
+                 <input type="password" name="password" id="password" class="form-control"  placeholder="Password"/>
                  <label class="form-label" for="password"></label>
 
                </div>
@@ -102,9 +100,12 @@
                </div>
 
                <!-- Submit button -->
-               <button type="submit" class="btn btn-primary btn-block mb-4">
+               <button type="submit" class="btn btn-primary btn-block m-lg-3">
                  Sign up
                </button>
+               <a type="submit" th:href="@{/public/register}" class="btn btn-primary btn-block m-lg-3">
+                 Create new User
+               </a>
 
                <!-- Register buttons -->
                <div class="text-center">

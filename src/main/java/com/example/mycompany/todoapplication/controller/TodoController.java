@@ -25,10 +25,9 @@ private final TodoService todoService;
     @RequestMapping(value = "/list-todo")
     public String getListOfTodo (Model model, Authentication authentication){
         List<Todo> todo = todoService.findAllMessage();
-
+        model.addAttribute("todo", todo);
         model.addAttribute("username", authentication.getName());
-        model.addAttribute("role", authentication.getAuthorities().toString());
-        model.addAttribute("todo" ,todo);
+        model.addAttribute("roles", authentication.getAuthorities().toString());
         return "todo-list";
     }
 
